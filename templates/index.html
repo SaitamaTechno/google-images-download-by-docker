@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Add position relative to allow absolute positioning */
+        }
+        h1, h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        /* Additional style for image preview */
+        #image-preview {
+            display: none;
+            position: absolute; /* Change to absolute positioning */
+            top: 50%;
+            right: -100px; /* Shift to the right by 100px */
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            max-width: 400px; /* Limit the maximum width of the image preview */
+            max-height: 300px; /* Limit the maximum height of the image preview */
+            overflow: hidden; /* Hide overflow to prevent larger images from overflowing */
+        }
+        #image-preview img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            // Get the current directory path
+            var currentDirectory = window.location.pathname;
+            var foldername=currentDirectory.split("/")
+            if (foldername.length==3 && foldername[1]=="images"){
+                var download_all_btn = document.createElement('button');
+                download_all_btn.textContent = 'Download All Images';
+                tag_a=document.getElementById("download_all")
+                tag_a.appendChild(download_all_btn);
+                tag_a.href=currentDirectory+"/"+foldername[2]+"_all_in_one.zip"
+            }
+            // Check if there is more than one directory (excluding the root directory)
+            if (currentDirectory !== "/") {
+                // Create a "Go Back" button
+                var backButton = document.createElement('button');
+                backButton.textContent = 'Go Back';
+                backButton.addEventListener('click', function() {
+                    // Go back to the parent directory
+                    window.history.back();
+                });
+
+                // Append the "Go Back" button after the Folder Content
+                var imageGallery = document.getElementById('image-gallery');
+                imageGallery.appendChild(backButton);
+            }
+
+            // Add event listeners to download links to show image preview on hover
+            var downloadLinks = document.querySelectorAll('a[download]');
+            downloadLinks.forEach(function(link) {
+                link.addEventListener('mouseenter', function(event) {
+                    var imageURL = event.target.href;
+                    if (document.getElementById('show-images').checked) {
+                        showImagePreview(imageURL);
+                    }
+                });
+                link.addEventListener('mouseleave', function() {
+                    hideImagePreview();
+                });
+            });
+
+            function showImagePreview(imageURL) {
+                var imagePreview = document.getElementById('image-preview');
+                var img = document.createElement('img');
+                img.src = imageURL;
+                imagePreview.appendChild(img);
+                imagePreview.style.display = 'block';
+            }
+
+            function hideImagePreview() {
+                var imagePreview = document.getElementById('image-preview');
+                imagePreview.innerHTML = '';
+                imagePreview.style.display = 'none';
+            }
+        };
+        function handleSubmit() {
+            if (validateInput()){
+            var searchInput = document.getElementById('search-term').value;
+            var limitInput = document.getElementById('search-limit').value;
+            var searchURL = '/search?limit=' + limitInput + '&search=' + encodeURIComponent(searchInput) + '&gui=1';
+            window.location.href = searchURL;
+        }
+        };
+        function validateInput() {
+        var inputField = document.getElementById('search-term').value;
+
+        // Check if the input is empty
+        if (!inputField) {
+            alert('Search box cannot be empty!');
+            return false; // Prevents further execution if input is empty
+        }
+        else{return true}}
+        function toggleDownload() {
+    var checkBox = document.getElementById('download');
+    var anchorTags = document.getElementsByClassName('myfiles');
+
+    if (checkBox.checked) {
+        // Add 'download' attribute to all anchor tags
+        for (var i = 0; i < anchorTags.length; i++) {
+            anchorTags[i].setAttribute('download', '');
+        }
+    } else {
+        // Remove 'download' attribute from all anchor tags
+        for (var i = 0; i < anchorTags.length; i++) {
+            anchorTags[i].removeAttribute('download');
+        }
+    }
+}
+
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <a href="/"><h1>Folder Content</h1></a>
+        <div>
+            <label for="search-term">Search Image:</label>
+            <input type="text" id="search-term" name="search-term" required>
+            <label for="search-limit">Limit:</label>
+            <input type="number" id="search-limit" name="search-limit" min="1" value="3">
+            <button onclick="handleSubmit()">Submit</button>
+        </div>
+        <!-- Checkbox for toggling image preview -->
+        <input type="checkbox" id="show-images" unchecked>
+        <label for="show-images">Show Images</label>
+        <input type="checkbox" id="download" onchange="toggleDownload()" checked>
+        <label for="download">Download</label>
+
+
+        <h2>Directories</h2>
+        <ul>
+            {% for dir in dirs %}
+                <li><a href="{{ url_for('get_dir', mydir=dir) }}">{{ dir }}</a></li>
+            {% endfor %}
+        </ul>
+        <h2>Files</h2>
+        <a id="download_all" href="" download></a>
+        
+        <ul>
+            {% for image in images %}
+                <li><a class="myfiles" href="{{ url_for('get_image', filename=image) }}" download>{{ image }}</a></li>
+            {% endfor %}
+        </ul>
+        <!-- Image preview container -->
+        <div id="image-gallery"></div>
+        <div id="image-preview"></div>
+
+    </div>
+</body>
+</html>
