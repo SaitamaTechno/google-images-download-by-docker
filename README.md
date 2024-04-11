@@ -30,3 +30,7 @@ main_url="http://192.168.1.236"
 image_links=get_image_links(main_url, search_term)
 print(image_links)
 </code></pre>
+
+## Source Usage <br>
+Source usage for 3 images <br>
+<img src="source_usage_for3images.jpg" alt="source usage for 3 images"><br>
