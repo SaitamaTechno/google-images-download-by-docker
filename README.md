@@ -20,7 +20,7 @@ http://192.168.1.236<br>
 http://192.168.1.236/search?limit=3&search=genos%20kun&gui=0</p>
 <br>
 
-<code>
+<pre> <code>
 import requests
 import time
 
@@ -49,4 +49,4 @@ def get_image_links(main_url, search_term, limit=3, zipped=0):
 main_url="http://192.168.1.236"
 image_links=get_image_links(main_url, "son goku")
 print(image_links)
-</code>
+</code></pre>
