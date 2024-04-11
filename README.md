@@ -14,6 +14,7 @@ docker stop image_searcher && docker rm image_searcher<br>
 go to the main url (your local url) for example:<br>
 http://192.168.1.236<br>
 Web Interface<br>
+Note: When show images option is enabled, when hover your mouse onto the image links the image will pop up amazingly :) <br>
 <img src="web_interface.png" alt="web interface">
 
 <br>
