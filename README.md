@@ -8,12 +8,12 @@ docker run -d -p 80:80 --name image_searcher saitamatechno/google_images_downloa
 ```
 ## Docker Build<br>
 ```bash
-docker build -t google_images_download .<br>
+docker build -t google_images_download .
 ```
 
 ## Docker Remove<br>
 ```bash
-docker stop image_searcher && docker rm image_searcher<br>
+docker stop image_searcher && docker rm image_searcher
 ```
 ## Control via Website<br>
 go to the main url (your local url) for example:<br>
