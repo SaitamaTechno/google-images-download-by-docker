@@ -13,6 +13,9 @@ docker stop image_searcher && docker rm image_searcher<br>
 ## Control via Website<br>
 go to the main url (your local url) for example:<br>
 http://192.168.1.236<br>
+Web Interface<br>
+<img src="web_interface.png" alt="web interface">
+
 <br>
 
 ## Control via Python Api<br>
