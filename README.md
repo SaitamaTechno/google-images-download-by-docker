@@ -15,7 +15,7 @@ go to the main url (your local url) for example:<br>
 http://192.168.1.236<br>
 <br>
 
-## Python Api<br>
+## Control via Python Api<br>
 <p>Get request to this url: <br>
 http://192.168.1.236/search?limit=3&search=genos%20kun&gui=0</p>
 <br>
