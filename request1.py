@@ -46,6 +46,8 @@ def save_images(image_links):
         else:
             img_name=search_term.replace(" ", "_")+str(i)+img_link[-5:]
         save_image("images/"+img_name, img_link)
+"""
+# example usage
 
 search_term="dragonball super"
 main_url="http://192.168.1.236"
@@ -57,3 +59,4 @@ if "This image is already searched." not in image_links[0]:
     print("images downloaded")
 else:
     print("Failed to download, because the image is already searched.")
+"""

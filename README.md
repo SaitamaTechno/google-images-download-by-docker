@@ -21,6 +21,10 @@ http://192.168.1.236/search?limit=3&search=genos%20kun&gui=0</p>
 <br>
 
 <pre> <code>
+#check request1.py
+
+from request1 import get_image_links
+
 search_term="dragonball super"
 main_url="http://192.168.1.236"
 image_links=get_image_links(main_url, search_term)
