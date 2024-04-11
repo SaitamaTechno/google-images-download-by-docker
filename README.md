@@ -1,21 +1,21 @@
-#Download Images From Internet Using Docker<br>
+# Download Images From Internet Using Docker<br>
 This repo is based on <a href="https://github.com/ultralytics/google-images-download">ultralytics repository</a><br>
 
-##Docker Run<br>
+## Docker Run<br>
 docker run -d -p 80:80 --name image_searcher saitamatechno/google_images_download:v1.0<br>
 
-##Docker Build<br>
+## Docker Build<br>
 docker build -t google_images_download .<br>
 
-##Docker Remove<br>
+## Docker Remove<br>
 docker stop image_searcher && docker rm image_searcher<br>
 
-##Control via Website<br>
+## Control via Website<br>
 go to the main url (your local url) for example:<br>
 http://192.168.1.236<br>
 <br>
 
-##Python Api<br>
+## Python Api<br>
 <p>Get request to this url: <br>
 http://192.168.1.236/search?limit=3&search=genos%20kun&gui=0</p>
 <br>
@@ -33,7 +33,7 @@ def get_image_links(main_url, search_term, limit=3, zipped=0):
     while 1:
         search_term=search_term.replace(" ", "%20")
         r=requests.get(f"{main_url}/search?limit={limit}&search={search_term}&gui=0")
-        ##print(r.text)
+        ## print(r.text)
         print("It may take 30 seconds please wait! Time:", counter)
         counter+=1
         response=r.json()
