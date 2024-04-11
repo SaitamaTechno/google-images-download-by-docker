@@ -33,4 +33,4 @@ print(image_links)
 
 ## Source Usage <br>
 Source usage for 3 images <br>
-<img src="source_usage_for3images.jpg" alt="source usage for 3 images"><br>
+<img src="source_usage_for3images.png" alt="source usage for 3 images"><br>
