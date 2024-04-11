@@ -2,14 +2,19 @@
 This repo is based on <a href="https://github.com/ultralytics/google-images-download">ultralytics repository</a><br>
 
 ## Docker Run<br>
-docker run -d -p 80:80 --name image_searcher saitamatechno/google_images_download:v1.0<br>
 
+```bash
+docker run -d -p 80:80 --name image_searcher saitamatechno/google_images_download:v1.0
+```
 ## Docker Build<br>
+```bash
 docker build -t google_images_download .<br>
+```
 
 ## Docker Remove<br>
+```bash
 docker stop image_searcher && docker rm image_searcher<br>
-
+```
 ## Control via Website<br>
 go to the main url (your local url) for example:<br>
 http://192.168.1.236<br>
