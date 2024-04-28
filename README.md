@@ -7,7 +7,7 @@ Here is a Docker Hub link: <a href="https://hub.docker.com/r/saitamatechno/googl
 ## Docker Run<br>
 
 ```bash
-docker run -d -p 80:80 --name image_searcher saitamatechno/google_images_download:latest
+docker run -d -p 80:80 --name image_searcher saitamatechno/google_images_download:v1.0
 ```
 ## Docker Build<br>
 ```bash
