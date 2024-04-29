@@ -6,6 +6,8 @@ Here is a Docker Hub link: <a href="https://hub.docker.com/r/saitamatechno/googl
 
 Youtube link: <a href="https://www.youtube.com/watch?v=fP-qXoVtlhY"> Download images with automation </a><br>
 
+Requirements: <code>apt install docker.io</code>
+
 ## Docker Run<br>
 
 ```bash
