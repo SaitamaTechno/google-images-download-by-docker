@@ -4,6 +4,8 @@ This repo is based on <a href="https://github.com/ultralytics/google-images-down
 
 Here is a Docker Hub link: <a href="https://hub.docker.com/r/saitamatechno/google_images_download">saitamatechno/google_images_download</a><br>
 
+Youtube link: <a href="https://www.youtube.com/watch?v=fP-qXoVtlhY"> Download images with automation </a><br>
+
 ## Docker Run<br>
 
 ```bash
